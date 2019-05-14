@@ -4,4 +4,4 @@ python:
 
 # command to run tests
 script:
- - python -m unittest 567_bank
+ - python -m unittest Testbank

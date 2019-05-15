@@ -1,27 +1,51 @@
 import unittest
 
-from Final_Bank import *
+from Final_bank import *
 
 class Testbank(unittest.TestCase):
 
-    def testWithdrawHuey_success(self):
-        self.assertEqual(huey.withdraw(10), 'Right')
-
-    def testWithdrawHuey_penalty(self):
-        self.assertEqual(huey.withdraw(100), 'Right')
-
-    def testWithdrawDewey_success(self):
-        self.assertEqual(dewey.withdraw(5), 'Right')
+    def test1WithdrawHuey_success(self):
+        huey.withdraw(10)
+        self.assertEqual(huey.balance, 140)
+        self.assertEqual(dewey.balance, 360)
+        self.assertEqual(louie.balance, 35)
+        self.assertEqual(scrooge.balance, 999980)
+        
+    def test2WithdrawHuey_penalty(self):   
+        huey.withdraw(100)
+        self.assertEqual(huey.balance, 135)
+        self.assertEqual(dewey.balance, 360)
+        self.assertEqual(louie.balance, 35)
+        self.assertEqual(scrooge.balance, 999985)
+        
+    def test3WithdrawDewey_success(self):
+        dewey.withdraw(5)
+        self.assertEqual(huey.balance, 140)
+        self.assertEqual(dewey.balance, 355)
+        self.assertEqual(louie.balance, 40)
+        self.assertEqual(scrooge.balance, 999975)
+        
+    def test4WithdrawDewey_penalty(self):
+        dewey.withdraw(200)
+        self.assertEqual(huey.balance, 140)
+        self.assertEqual(dewey.balance, 350)
+        self.assertEqual(louie.balance, 40)
+        self.assertEqual(scrooge.balance, 999980)
     
-    def testWithdrawDewey_penalty(self):
-        self.assertEqual(dewey.withdraw(200), 'Right')
+    def test5WithdrawLouie_success(self):
+        louie.withdraw(2)
+        self.assertEqual(huey.balance, 142)
+        self.assertEqual(dewey.balance, 352)
+        self.assertEqual(louie.balance, 38)
+        self.assertEqual(scrooge.balance, 999976)
+       
+    def test6WithdrawLouie_penalty(self):
+        louie.withdraw(20)
+        self.assertEqual(huey.balance, 142)
+        self.assertEqual(dewey.balance, 352)
+        self.assertEqual(louie.balance, 33)
+        self.assertEqual(scrooge.balance, 999981)
     
-    def testWithdrawLouie_success(self):
-        self.assertEqual(louie.withdraw(2) 'Right')
-    
-    def testWithdrawLouie_penalty(self):
-        self.assertEqual(louie.withdraw(20), 'Right')
-   
     if __name__ == '__main__':
         print('Running unit tests')
         unittest.main()
